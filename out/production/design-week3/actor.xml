@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <classname>com.alex.designpattern.builder.game.DevilBuilder</classname>
+</config>

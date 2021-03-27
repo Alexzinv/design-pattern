@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <logger-class>com.alex.designpattern.factory.log.DatabaseLoggerFactory</logger-class>
+    <logger-level>2</logger-level>
+    <logger-param>jdbc:mysql://localhost:3306/test/</logger-param>
+</config>
