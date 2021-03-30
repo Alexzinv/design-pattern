@@ -8,4 +8,10 @@ public abstract class CarController {
 	public abstract void phonate();
 
 	public abstract void twinkle();
+
+	public void action(){
+		move();
+		phonate();
+		twinkle();
+	}
 }
