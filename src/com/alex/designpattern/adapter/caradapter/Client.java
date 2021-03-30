@@ -4,14 +4,14 @@ import org.junit.Test;
 
 public class Client {
 	public static void main(String[] args) {
-		CarController controller = new PoliceCarAdapter(new PoliceSound(), new PoliceLamp());
+		CarController controller = new PoliceCarAdapter();
 		controller.action();
 
 	}
 
 	@Test
 	public void ambulanceTest(){
-		CarController controller = new AmbulanceCarAdapter(new AmbulanceSound(), new AmbulanceLamp());
+		CarController controller = new AmbulanceCarAdapter();
 		controller.action();
 	}
 }

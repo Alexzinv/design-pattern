@@ -4,7 +4,10 @@ public class AmbulanceCarAdapter extends CarController{
 	private AmbulanceSound sound;
 	private AmbulanceLamp lamp;
 
-	public AmbulanceCarAdapter(){}
+	public AmbulanceCarAdapter(){
+		this.sound = new AmbulanceSound();
+		this.lamp = new AmbulanceLamp();
+	}
 
 	public AmbulanceCarAdapter(AmbulanceSound sound, AmbulanceLamp lamp){
 		this.sound = sound;

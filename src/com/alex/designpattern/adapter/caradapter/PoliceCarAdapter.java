@@ -4,7 +4,10 @@ public class PoliceCarAdapter extends CarController{
 	private PoliceSound sound;
 	private PoliceLamp lamp;
 
-	public PoliceCarAdapter(){}
+	public PoliceCarAdapter(){
+		this.sound = new PoliceSound();
+		this.lamp = new PoliceLamp();
+	}
 
 	public PoliceCarAdapter(PoliceSound sound, PoliceLamp lamp){
 		this.sound = sound;
