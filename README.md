@@ -211,7 +211,7 @@ public class GifReader implements ImageReader{
 
 + [skin](https://gitee.com/alexinv/design-pattern/tree/master/src/com/alex/designpattern/factory/skin)
 
-<img src="D:\Coding\Java\设计模式\project\design-pattern\img\skin_uml.png" alt="skin_uml" style="zoom: 80%;" />
+<img src="https://gitee.com/alexinv/design-pattern/blob/master/img/skin_uml.png" alt="skin_uml" style="zoom: 80%;" />
 
 
 
@@ -275,7 +275,7 @@ public class SummerSkinFactory implements SkinFactory{
 
 [os](https://gitee.com/alexinv/design-pattern/tree/master/src/com/alex/designpattern/factory/os)
 
-<img src="D:\Coding\Java\设计模式\project\design-pattern\img\os_uml.png" alt="os_uml" style="zoom:80%;" />
+<img src="https://gitee.com/alexinv/design-pattern/blob/master/img/os_uml.png" alt="os_uml" style="zoom:80%;" />
 
 
 
@@ -405,6 +405,7 @@ public Actor construct(ActorBuilder ab){
 
 
 + [computer]()
+<img src="https://gitee.com/alexinv/design-pattern/blob/master/img/computer_uml.png" alt="computer_uml" style="zoom: 80%;" />
 
 ```java
 @NoArgsConstructor
