@@ -1,4 +1,4 @@
-package com.alex.designpattern.Prototype.shallowcopy;
+package com.alex.designpattern.prototype.shallowcopy;
 
 import org.junit.Test;
 

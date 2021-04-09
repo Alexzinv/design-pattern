@@ -1,4 +1,4 @@
-package com.alex.designpattern.Prototype.weekreport;
+package com.alex.designpattern.prototype.weekreport;
 
 public class WeeklyLogClient {
 	public static void main(String[] args) {

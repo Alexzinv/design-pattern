@@ -2,13 +2,15 @@ package com.alex.designpattern.practice.connectionpool.pool;
 
 import com.alex.designpattern.util.ConfigUtil;
 
+import java.rmi.ServerError;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class MyConnectionPool {
-	private static final String Driver = "com.mysql.cj.jdbc.Driver";
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final int STEP = 2;   // 新增连接的步长
 	private final String dbUrl;
 	private final String dbUser;
 	private final String dbPass;
@@ -55,13 +57,85 @@ public class MyConnectionPool {
 		System.out.println("连接池初始化完成！初始连接数: " + initCount + "  最大连接数：" + maxCount);
 	}
 
+	/**
+	 * 创建一个新连接
+	 * @return 连接对象
+	 */
 	private Connection createConnection(){
 		try {
-			Class.forName(Driver);
+			Class.forName(DRIVER);
 			return DriverManager.getConnection(dbUrl, dbUser, dbPass);
 		} catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	private void increasePool(){
+		if(freeConPool.size() + inuseConPool.size() <= maxCount){
+			for(int i=0; i<STEP; i++){
+				Connection connection = createConnection();
+				freeConPool.add(connection);
+			}
+		}
+	}
+
+	/**
+	 * 从空闲池中获取可用连接
+	 * @return 获取可用连接
+	 */
+	public synchronized Connection getConnection(){
+		Connection con = freeConPool.poll();
+		if(con == null){
+			System.out.println("当前没有可用连接，马上申请新连接... inuse_pool_size=" + inuseConPool.size());
+			while(inuseConPool.size() >= maxCount){
+				System.err.println("已达到最大连接，无法创建新连接，等待中...");
+				// 等待一个随机时间
+				try {
+					Thread.sleep((long)(Math.random()*1000));
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				//再次尝试连接
+				return getConnection();
+			}
+			// 尚未达到最大连接数, 创建新连接放入空闲池, getConnection必须从池中获取
+			// 增大连接池
+			increasePool();
+			// 再次尝试获取连接
+			return getConnection();
+		}
+		// 拿到可用连接则放入在用池
+		inuseConPool.add(con);
+		System.out.println("获取连接成功! con=" + con);
+		return con;
+	}
+
+	/**
+	 * 释放连接到空闲池子
+	 */
+	public void freeConnection(Connection con){
+		inuseConPool.remove(con);
+		freeConPool.add(con);
+		System.out.println("释放连接成功，当前可用连接数为" + freeConPool.size());
+	}
+
+	/**
+	 * 销毁整个连接池
+	 */
+	public void destoryPool(){
+		try {
+			while (!inuseConPool.isEmpty()){
+				Connection con = inuseConPool.poll();
+				con.close();
+			}
+			while (!freeConPool.isEmpty()){
+				Connection con = freeConPool.poll();
+				con.close();
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("连接池已销毁!");
 	}
 }

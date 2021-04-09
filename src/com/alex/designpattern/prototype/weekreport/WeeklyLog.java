@@ -1,4 +1,4 @@
-package com.alex.designpattern.Prototype.weekreport;
+package com.alex.designpattern.prototype.weekreport;
 
 import java.io.*;
 

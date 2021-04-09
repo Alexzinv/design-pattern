@@ -1,4 +1,4 @@
-package com.alex.designpattern.Prototype.shallowcopy;
+package com.alex.designpattern.prototype.shallowcopy;
 
 import java.util.ArrayList;
 import java.util.List;

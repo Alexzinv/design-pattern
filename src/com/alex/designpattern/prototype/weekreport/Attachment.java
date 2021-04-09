@@ -1,4 +1,4 @@
-package com.alex.designpattern.Prototype.weekreport;
+package com.alex.designpattern.prototype.weekreport;
 
 public class Attachment {
 	private String name;
