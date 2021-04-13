@@ -2,7 +2,6 @@ package com.alex.designpattern.practice.connectionpool.pool;
 
 import com.alex.designpattern.util.ConfigUtil;
 
-import java.rmi.ServerError;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Queue;
@@ -123,7 +122,7 @@ public class MyConnectionPool {
 	/**
 	 * 销毁整个连接池
 	 */
-	public void destoryPool(){
+	public void destroyPool(){
 		try {
 			while (!inuseConPool.isEmpty()){
 				Connection con = inuseConPool.poll();
