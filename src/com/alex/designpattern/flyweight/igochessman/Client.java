@@ -31,6 +31,12 @@ public class Client {
 			coordinate = list.remove(randPosition);
 			IgoChessman chess = factory.getChess(colors[index % 2]);
 			chess.display(index++, coordinate);
+
+			try {
+				Thread.sleep((long)(Math.random()*1000));
+			} catch (Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 }
