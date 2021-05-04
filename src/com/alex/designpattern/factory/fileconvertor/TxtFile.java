@@ -1,6 +1,7 @@
 package com.alex.designpattern.factory.fileconvertor;
 
 import org.dom4j.Document;
+import org.dom4j.tree.DefaultDocument;
 
 public class TxtFile implements DataFile {
 
@@ -9,8 +10,8 @@ public class TxtFile implements DataFile {
 	}
 
 	@Override
-	public Document convert2Xml(String fileName) {
+	public Document file2Xml(String fileName) {
 		System.out.println("将文本文件" + fileName + "转化为xml");
-		return null;
+		return new DefaultDocument(fileName);
 	}
 }

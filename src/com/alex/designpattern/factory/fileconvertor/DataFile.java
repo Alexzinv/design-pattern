@@ -9,5 +9,5 @@ public interface DataFile {
 	 * @param fileName 文件名
 	 * @return xml的Document对象
 	 */
-	Document convert2Xml(String fileName);
+	Document file2Xml(String fileName);
 }

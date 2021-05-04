@@ -8,6 +8,6 @@ public class Client {
 	public void test1(){
 		ExcelFileFactory excelFileFactory = new ExcelFileFactory();
 		DataFile dataFile = excelFileFactory.createDataFile();
-		dataFile.convert2Xml("D:/Document/1.xls");
+		dataFile.file2Xml("D:/Document/1.xls");
 	}
 }
