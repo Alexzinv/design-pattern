@@ -2,7 +2,10 @@ package com.alex.designpattern.prototype.weekreport;
 
 import java.io.*;
 
-public class WeeklyLog implements Cloneable{
+/**
+ * @author Alex
+ */
+public class WeeklyLog implements Cloneable, Serializable{
 	private Attachment attachment;
 	private String name;
 	private String date;
@@ -61,7 +64,10 @@ public class WeeklyLog implements Cloneable{
 		return null;
 	}
 
-	// 深拷贝 方式二：对象序列化实现  <推荐>
+	/**
+	 * 深拷贝 方式二：对象序列化实现  <推荐>
+	 * @return 深拷贝对象
+	 */
 	public WeeklyLog deepClone(){
 		ByteArrayOutputStream bos = null;
 		ObjectOutputStream oos = null;
@@ -71,7 +77,8 @@ public class WeeklyLog implements Cloneable{
 			// 序列化
 			bos = new ByteArrayOutputStream();
 			oos = new ObjectOutputStream(bos);
-			oos.writeObject(this);    // 把当前对象一对象流方式输出
+			// 把当前对象一对象流方式输出,实现serializable接口
+			oos.writeObject(this);
 
 			// 反序列化
 			bis = new ByteArrayInputStream(bos.toByteArray());
@@ -82,29 +89,33 @@ public class WeeklyLog implements Cloneable{
 			e.printStackTrace();
 			return null;
 		} finally {
-			try {
-				if(ois != null)
+			if(null != ois){
+				try {
 					ois.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				if(bis != null)
+			if(null != bis){
+				try {
 					bis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				if(oos != null)
+			if(null != oos){
+				try {
 					oos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				if(bos != null)
+			if(null != bos){
+				try {
 					bos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

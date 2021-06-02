@@ -1,6 +1,11 @@
 package com.alex.designpattern.prototype.weekreport;
 
-public class Attachment {
+import java.io.Serializable;
+
+/**
+ * @author Alex
+ */
+public class Attachment implements Serializable {
 	private String name;
 
 	public Attachment(String name) {
