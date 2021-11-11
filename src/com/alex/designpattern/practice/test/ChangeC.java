@@ -13,7 +13,7 @@ public class ChangeC {
 		total += init;
 	    int ex = init / 3;
 	    exN += init % 3;
-	    if (exN % 3 == 0){
+	    if (exN == 3){
 	    	exN = 0;
 	    	total += 1;
 	    }
