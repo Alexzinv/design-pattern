@@ -585,6 +585,11 @@ public class WeeklyLog implements Serializable {    // 实现Serializable接口
 
 ### 4.单例模式
 
++ 饿汉式
++ 懒汉式(双重检测)
++ 内部类
++ 枚举
+
 
 
 ​										<font color=deeppink>update...</font>
